@@ -1,0 +1,12 @@
+
+.boton-cuidado{background-color: darkblue; color: lightsalmon}
+.boton-exito {background-color: lightsalmon; color: darkblue}
+button:hover {
+    border-color: yellow;
+    background-color: gold;
+    font-size: large;
+}
+button:focus {
+    border: solid;
+    font-size: 50px;
+}
