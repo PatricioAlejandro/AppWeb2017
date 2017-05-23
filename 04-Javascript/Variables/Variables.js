@@ -18,9 +18,15 @@ var json = {
     fechaNacimiento: new Date(),
     mayorEdad: true,
     peso: 70.3,
-    altura: 159
+    altura: 159,
+    imprimirNombreCompleto: function () {
+        return this.nombre + "  " + this.apellido;
+    }
 };
-
-
 json.altura //159
 json.apellido //chvz
+json.imprimirNombreCompleto();
+json.titulo = "Ingeniero";
+//json.titulo.fechaExpedicion = // esto esta maaaaaal
+delete json.titulo;
+
