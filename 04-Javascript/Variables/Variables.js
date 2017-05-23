@@ -30,3 +30,8 @@ json.titulo = "Ingeniero";
 //json.titulo.fechaExpedicion = // esto esta maaaaaal
 delete json.titulo;
 
+
+
+
+
+
