@@ -22,3 +22,4 @@ let holaMundo6 = () => 5;
 let hola = nombre => "Hola "+ nombre;
 
 let saludarApellido = (nombre,apellido) => `Hola ${nombre} ${apellido}`;
+console.log(saludarApellido("Pato","Chavez"));
