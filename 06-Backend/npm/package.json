@@ -1,6 +1,6 @@
 {
   "name": "twj-a-chavez",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "calculadora",
   "main": "index.js",
   "scripts": {
@@ -11,5 +11,8 @@
     "calculadora"
   ],
   "author": "patricio chavez",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "machinepack-passwords": "^2.3.0"
+  }
 }
