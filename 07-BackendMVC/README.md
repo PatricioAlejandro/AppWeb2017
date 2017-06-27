@@ -26,3 +26,8 @@
 ```javascript
 > sails generate controller name
 ```
+
+##Crear nuevo modelo
+```javascript
+> sails generate model name
+```

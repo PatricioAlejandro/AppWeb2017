@@ -2,6 +2,9 @@
  * Created by patriciochavez on 6/19/17.
  */
 declare var module;
+declare var sails;
+declare var Usuario;
+
 module.exports = {
   bienvenido:function(req,res){
     if (req.method == "PUT"){
@@ -57,5 +60,22 @@ module.exports = {
   }
   att: function (req,res) {
     return res.attachment();
+  },
+
+  crearUsuarioQuemado: (req,res)=>{
+    let nuevoUsuario = {
+      nombres: "Patricio",
+      apellidos: "Chavez",
+      password: "123",
+      correo: "asdasd@asdf.com",
+      fechaNacimiento: new Date()
+    };
+    Usuario.create(nuevoUsuario).exec((err,records)=>{
+      if(err){
+        return res.serverError(err);
+      }else{
+        return res.ok(records);
+      }
+    })
   }
 }

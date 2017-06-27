@@ -54,5 +54,22 @@ module.exports = {
     },
     att: function (req, res) {
         return res.attachment();
+    },
+    crearUsuarioQuemado: function (req, res) {
+        var nuevoUsuario = {
+            nombres: "Patricio",
+            apellidos: "Chavez",
+            password: "123",
+            correo: "asdasd@asdf.com",
+            fechaNacimiento: new Date()
+        };
+        Usuario.create(nuevoUsuario).exec(function (err, records) {
+            if (err) {
+                return res.serverError(err);
+            }
+            else {
+                return res.ok(records);
+            }
+        });
     }
 };
