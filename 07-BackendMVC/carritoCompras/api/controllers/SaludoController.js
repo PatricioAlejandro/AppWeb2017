@@ -56,13 +56,16 @@ module.exports = {
         return res.attachment();
     },
     crearUsuarioQuemado: function (req, res) {
+        var parametros = req.allParams();
         var nuevoUsuario = {
-            nombres: "Patricio",
-            apellidos: "Chavez",
-            password: "123",
-            correo: "asdasd@asdf.com",
-            fechaNacimiento: new Date()
+            nombres: parametros.nombres,
+            apellidos: parametros.apellidos,
+            password: parametros.password,
+            correo: parametros.correo,
+            fechaNacimiento: parametros.fechaNacimiento
         };
+        //1-> Query parameters
+        //2-> Forms parameters
         Usuario.create(nuevoUsuario).exec(function (err, records) {
             if (err) {
                 return res.serverError(err);
