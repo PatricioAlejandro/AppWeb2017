@@ -72,7 +72,6 @@ module.exports = {
       fechaNacimiento: parametros.fechaNacimiento
     };
     //1-> Query parameters
-
     //2-> Forms parameters
     Usuario.create(nuevoUsuario).exec((err,records)=>{
       if(err){
