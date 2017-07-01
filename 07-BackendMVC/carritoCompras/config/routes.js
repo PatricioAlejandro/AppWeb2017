@@ -37,7 +37,8 @@ module.exports.routes = {
   },
   '/perfil':{
     view:'usuario gestion/perfil'
-  }
+  },
+  'get /contenidoOculto':'VistaController.vistaOculta'
 
   /***************************************************************************
   *                                                                          *

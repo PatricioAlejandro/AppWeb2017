@@ -30,13 +30,18 @@
 
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/Bootstrap/css/bootstrap.css">
     <!--STYLES END-->
   </head>
 
   <body>
-  <h1>antes body</h1>
+
+  <%- partial('header.ejs')%>
+  <div class="container">
     <%- body %>
-  <h1>despues body</h1>
+  </div>
+  <%- partial('footer.ejs')%>
+
 
 
     <!--
@@ -87,9 +92,10 @@
           + Use a different preprocessor, like TypeScript
 
     -->
-
+  <script   src="https://code.jquery.com/jquery-3.2.1.js"   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="   crossorigin="anonymous"></script>
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/Bootstrap/js/bootstrap.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>
