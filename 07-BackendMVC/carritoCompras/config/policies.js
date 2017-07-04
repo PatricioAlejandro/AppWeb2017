@@ -49,6 +49,6 @@ module.exports.policies = {
 	// 	feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
   VistaController:{
-    vistaOculta : ['validarAnio']
+    vistaOculta : ['validarHeaderAuthorization']
   }
 };
