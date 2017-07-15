@@ -1,1 +1,19 @@
 <h1>HOMEPAGE</h1>
+<h1>USUARIOS</h1>
+<div class="row ma-margen-top-bottom">
+  <% for(var i = 0; i < usuarios.length; i++) { %>
+  <div class="col-sm-4">
+    <div class="card" style="width: 20rem;">
+      <div class="card-block">
+        <h4 class="card-title"><%= usuarios[i].id %> <%= usuarios[i].nombres %>-<%= usuarios[i].apellidos %></h4>
+        <p class="card-text">email-><%= usuarios[i].correo %></p>
+        <a href="#" class="btn btn-primary">Go to page <%= usuarios[i].nombres %></a>
+      </div>
+    </div>
+    <form action="/Saludo/eliminarUsuario?id=<%usuarios[i].id%>" method="post">
+      <button type="submit" class="btn btn-outline-danger">Borrar</button>
+    </form>
+  </div>
+  <% } %>
+</div>
+

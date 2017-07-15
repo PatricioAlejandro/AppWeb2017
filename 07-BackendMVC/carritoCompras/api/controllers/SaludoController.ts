@@ -21,28 +21,28 @@ module.exports = {
       return res.badRequest("Error en el metodo")
     }
   }
-  chars: function(req,res){
+  charsetTest: function(req,res){
     res.charset = 'utf8';
     return res.send();
   }
-  enviar: function(req,res){
+  sendTest: function(req,res){
     res.send("Hola, este es un metodo .send")
   }
-  son: function(req,res){
+  jsonTest: function(req,res){
     res.json({saludo:'Hola, este es un metodo .json'});
   }
-  sonp: function(req,res){
+  jsonpTest: function(req,res){
     return res.jsonp({
       users: [{
         name: 'Patricio',
         id: 1
       }, {
-        name: 'Juan'
+        name: 'Juan',
         id: 2
       }]
     });
   }
-  tipo: function(req,res) {
+  typeTest: function(req,res) {
     return res.type('json');
   }
   formato: function (req,res) {
@@ -58,12 +58,13 @@ module.exports = {
       }
     });
   }
-  att: function (req,res) {
+  attTest: function (req,res) {
     return res.attachment();
   },
 
   crearUsuarioQuemado: (req,res)=>{
     let parametros = req.allParams();
+    //sails.log("Parametros",parametros);
     let nuevoUsuario = {
       nombres: parametros.nombres,
       apellidos: parametros.apellidos,
@@ -74,6 +75,66 @@ module.exports = {
     //1-> Query parameters
     //2-> Forms parameters
     Usuario.create(nuevoUsuario).exec((err,records)=>{
+      if(err){
+        return res.serverError(err);
+      }else{
+        res.redirect('/');
+      }
+    })
+  },
+  encontrarUsuario: (req,res)=>{
+    let parametros = req.allParams();
+    let User = {
+      nombres: parametros.nombres
+    };
+    //1-> Query parameters
+    //2-> Forms parameters
+    Usuario.find(User).exec((err,records)=>{
+      if(err){
+        return res.serverError(err);
+      }else{
+        return res.ok(records);
+      }
+    })
+  },
+  encontrarCrear: (req,res)=>{
+    let parametros = req.allParams();
+    let User = {
+      nombres: parametros.nombres
+    };
+    //1-> Query parameters
+    //2-> Forms parameters
+    Usuario.findOrCreate(User).exec((err,records)=>{
+      if(err){
+        return res.serverError(err);
+      }else{
+        return res.ok(records);
+      }
+    })
+  },
+  contar: (req,res)=>{
+    let parametros = req.allParams();
+    let User = {
+      nombres: parametros.nombres
+    };
+    //1-> Query parameters
+    //2-> Forms parameters
+    Usuario.count(User).exec((err,records)=>{
+      if(err){
+        return res.serverError(err);
+      }else{
+        return res.ok(records);
+      }
+    })
+  },
+  eliminar: (req,res)=>{
+    let parametros = req.allParams();
+    let User = {
+      nombres: parametros.nombres
+    };
+    //1-> Query parameters
+    //2-> Forms parameters
+    Usuario.destroy(User).exec((err,records)=>{
       if(err){
         return res.serverError(err);
       }else{

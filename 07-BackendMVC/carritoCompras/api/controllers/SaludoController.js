@@ -15,17 +15,17 @@ module.exports = {
             return res.badRequest("Error en el metodo");
         }
     },
-    chars: function (req, res) {
+    charsetTest: function (req, res) {
         res.charset = 'utf8';
         return res.send();
     },
-    enviar: function (req, res) {
+    sendTest: function (req, res) {
         res.send("Hola, este es un metodo .send");
     },
-    son: function (req, res) {
+    jsonTest: function (req, res) {
         res.json({ saludo: 'Hola, este es un metodo .json' });
     },
-    sonp: function (req, res) {
+    jsonpTest: function (req, res) {
         return res.jsonp({
             users: [{
                     name: 'Patricio',
@@ -36,7 +36,7 @@ module.exports = {
                 }]
         });
     },
-    tipo: function (req, res) {
+    typeTest: function (req, res) {
         return res.type('json');
     },
     formato: function (req, res) {
@@ -52,11 +52,12 @@ module.exports = {
             }
         });
     },
-    att: function (req, res) {
+    attTest: function (req, res) {
         return res.attachment();
     },
     crearUsuarioQuemado: function (req, res) {
         var parametros = req.allParams();
+        //sails.log("Parametros",parametros);
         var nuevoUsuario = {
             nombres: parametros.nombres,
             apellidos: parametros.apellidos,
@@ -67,6 +68,70 @@ module.exports = {
         //1-> Query parameters
         //2-> Forms parameters
         Usuario.create(nuevoUsuario).exec(function (err, records) {
+            if (err) {
+                return res.serverError(err);
+            }
+            else {
+                res.redirect('/');
+            }
+        });
+    },
+    encontrarUsuario: function (req, res) {
+        var parametros = req.allParams();
+        var User = {
+            nombres: parametros.nombres
+        };
+        //1-> Query parameters
+        //2-> Forms parameters
+        Usuario.find(User).exec(function (err, records) {
+            if (err) {
+                return res.serverError(err);
+            }
+            else {
+                return res.ok(records);
+            }
+        });
+    },
+    encontrarCrear: function (req, res) {
+        var parametros = req.allParams();
+        var User = {
+            nombres: parametros.nombres
+        };
+        //1-> Query parameters
+        //2-> Forms parameters
+        Usuario.findOrCreate(User).exec(function (err, records) {
+            if (err) {
+                return res.serverError(err);
+            }
+            else {
+                return res.ok(records);
+            }
+        });
+    },
+    contar: function (req, res) {
+        var parametros = req.allParams();
+        var User = {
+            nombres: parametros.nombres
+        };
+        //1-> Query parameters
+        //2-> Forms parameters
+        Usuario.count(User).exec(function (err, records) {
+            if (err) {
+                return res.serverError(err);
+            }
+            else {
+                return res.ok(records);
+            }
+        });
+    },
+    eliminar: function (req, res) {
+        var parametros = req.allParams();
+        var User = {
+            nombres: parametros.nombres
+        };
+        //1-> Query parameters
+        //2-> Forms parameters
+        Usuario.destroy(User).exec(function (err, records) {
             if (err) {
                 return res.serverError(err);
             }
